@@ -1,0 +1,342 @@
+/* ============================================================
+   ABU ZAYNAH — Styles globaux
+   Vue.js migration
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:      #FAF7F2;
+  --gold:       #C8860A;
+  --gold-light: #E8A020;
+  --gold-pale:  #F5E6C8;
+  --sand:       #E8DCC8;
+  --brown:      #1A1208;
+  --brown-mid:  #4A3520;
+  --text:       #1A1208;
+  --text-muted: #7A6550;
+  --white:      #FFFFFF;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 4px 24px rgba(26,18,8,0.08);
+  --shadow-gold: 0 8px 32px rgba(200,134,10,0.18);
+  --transition:  0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a   { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+section { scroll-margin-top: 72px; }
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+.section-label {
+  font-size: 0.71rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--brown);
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  font-size: 1.03rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.gold-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin: 14px 0 26px;
+  border-radius: 2px;
+}
+.gold-line.center { margin-left: auto; margin-right: auto; }
+
+/* ---- Fade up scroll animation ---- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 32px;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.32s ease, border-color 0.32s ease,
+              color 0.32s ease, box-shadow 0.32s ease, transform 0.22s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Filled — or */
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
+}
+.btn-gold:hover {
+  background: #ad7408;
+  border-color: #ad7408;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(200,134,10,0.18);
+}
+
+/* Contour clair (sur fond sombre / hero) */
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.38);
+}
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Contour or (sur fond clair) */
+.btn-outline-dark {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.btn-outline-dark:hover {
+  background: var(--gold);
+  color: var(--white);
+  box-shadow: 0 6px 20px rgba(200,134,10,0.16);
+}
+
+/* WhatsApp */
+.btn-wa {
+  background: #25D366;
+  color: var(--white);
+  border-color: #25D366;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+.btn-wa:hover {
+  background: #1cb852;
+  border-color: #1cb852;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.22);
+}
+
+/* Snapchat */
+.btn-snap {
+  background: #FFFC00;
+  color: #1A1208;
+  border-color: #FFFC00;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+.btn-snap:hover {
+  background: #ece900;
+  border-color: #ece900;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255,252,0,0.28);
+}
+
+/* ============================================================
+   PRODUCT CARD (partagé boutique + index)
+============================================================ */
+.product-card {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(232,220,200,0.7);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-gold);
+}
+
+.product-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+.product-image img { transition: transform 0.5s ease; }
+.product-card:hover .product-image img { transform: scale(1.06); }
+
+.product-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: rgba(26,18,8,0.72);
+  backdrop-filter: blur(6px);
+  color: var(--gold-pale);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 30px;
+}
+
+.product-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-name {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.product-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.product-format {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--sand);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.product-price {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ============================================================
+   PAGE HERO (sous-pages)
+============================================================ */
+.page-hero {
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 52px;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,18,8,0.38) 0%, rgba(26,18,8,0.72) 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-breadcrumb {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-hero-breadcrumb a { color: rgba(255,255,255,0.55); transition: color var(--transition); }
+.page-hero-breadcrumb a:hover { color: var(--gold-pale); }
+
+.page-hero-content h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.page-hero-content p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+}
