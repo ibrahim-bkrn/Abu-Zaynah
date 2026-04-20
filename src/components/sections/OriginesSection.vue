@@ -22,9 +22,9 @@
 </template>
 
 <script setup>
-import img5 from '@/assets/images/abou-zaynah8.jpg'
-import img2 from '@/assets/images/origine1.jpeg'
-import img3 from '@/assets/images/abou-zaynah4.jpg'
+import img5 from '@/assets/images/abou-zaynah8.webp'
+import img2 from '@/assets/images/origine1.webp'
+import img3 from '@/assets/images/abou-zaynah4.webp'
 
 const panels = [
   {

@@ -27,7 +27,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import heroBg from '@/assets/images/abou-zaynah3.jpg'
+import heroBg from '@/assets/images/abou-zaynah3.webp'
 
 const bgLoaded = ref(false)
 const bgEl = ref(null)

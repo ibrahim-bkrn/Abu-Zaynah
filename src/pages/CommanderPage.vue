@@ -198,7 +198,7 @@ const faqs = [
 }
 .commander-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('@/assets/images/abou-zaynah3.jpg');
+  background-image: url('@/assets/images/abou-zaynah3.webp');
   background-size: cover;
   background-position: center 30%;
 }

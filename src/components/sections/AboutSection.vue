@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import histoireImg from '@/assets/images/abou-zaynah7.jpg'
+import histoireImg from '@/assets/images/abou-zaynah7.webp'
 </script>
 
 <style scoped>

@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import citationBg from '@/assets/images/arrierePlanCitation.jpeg'
+import citationBg from '@/assets/images/arrierePlanCitation.webp'
 </script>
 
 <style scoped>

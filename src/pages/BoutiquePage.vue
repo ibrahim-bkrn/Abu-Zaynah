@@ -74,7 +74,7 @@ useScrollAnimation()
 .boutique-hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('@/assets/images/abou-zaynah6.jpg');
+  background-image: url('@/assets/images/abou-zaynah6.webp');
   background-size: cover;
   background-position: center 40%;
 }

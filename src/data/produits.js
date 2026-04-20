@@ -1,18 +1,17 @@
-import img4 from '@/assets/images/abou-zaynah4.jpg'
-import img5 from '@/assets/images/abou-zaynah5.jpg'
+import img4 from '@/assets/images/abou-zaynah4.webp'
+import img5 from '@/assets/images/abou-zaynah5.webp'
 
-import imgMielJujubier  from '@/assets/images/imagesProduits/mielJujubier.jpeg'
-import imgMielBlanc     from '@/assets/images/imagesProduits/mielBlanc.jpeg'
-import imgHuileNigelle  from '@/assets/images/imagesProduits/huile de nigelle.jpeg'
-import imgHuileNigelle2  from '@/assets/images/nigelle2.png'
-import imgGelulesNigelle from '@/assets/images/imagesProduits/gelule de nigelle.jpeg'
-import imgGelulesNigelle2 from '@/assets/images/nigelle.png'
-import imgAmlou from '@/assets/images/imagesProduits/amlou.png' 
-import imgEuphorbe from '@/assets/images/imagesProduits/euphrobe.png'
+import imgMielJujubier   from '@/assets/images/imagesProduits/mielJujubier.webp'
+import imgMielBlanc      from '@/assets/images/imagesProduits/mielBlanc.webp'
+import imgHuileNigelle   from '@/assets/images/imagesProduits/huile de nigelle.webp'
+import imgHuileNigelle2  from '@/assets/images/nigelle2.webp'
+import imgGelulesNigelle  from '@/assets/images/imagesProduits/gelule de nigelle.webp'
+import imgGelulesNigelle2 from '@/assets/images/nigelle.webp'
+import imgAmlou          from '@/assets/images/imagesProduits/amlou.webp'
+import imgEuphorbe       from '@/assets/images/imagesProduits/euphrobe.webp'
 
-// Deuxieme image de chaque produit
-import imgMielJujubier2 from '@/assets/images/imagesProduits/mielJujubier2.png'
-import imgEuphorbe2 from '@/assets/images/imagesProduits/euphrobe2.png'
+import imgMielJujubier2 from '@/assets/images/imagesProduits/mielJujubier2.webp'
+import imgEuphorbe2     from '@/assets/images/imagesProduits/euphrobe2.webp'
 
 export const produits = [
   {
