@@ -33,12 +33,12 @@ const bgLoaded = ref(false)
 const bgEl = ref(null)
 
 onMounted(() => {
-  if (bgEl.value) {
-    bgEl.value.style.backgroundImage = `url('${heroBg}')`
-  }
-  setTimeout(() => {
+  const img = new Image()
+  img.src = heroBg
+  img.onload = () => {
+    if (bgEl.value) bgEl.value.style.backgroundImage = `url('${heroBg}')`
     bgLoaded.value = true
-  }, 100)
+  }
 })
 </script>
 

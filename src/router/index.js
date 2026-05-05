@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/HomePage.vue'
-import BoutiquePage from '@/pages/BoutiquePage.vue'
-import ProduitPage from '@/pages/ProduitPage.vue'
-import CommanderPage from '@/pages/CommanderPage.vue'
+const HomePage = () => import('@/pages/HomePage.vue')
+const BoutiquePage = () => import('@/pages/BoutiquePage.vue')
+const ProduitPage = () => import('@/pages/ProduitPage.vue')
+const CommanderPage = () => import('@/pages/CommanderPage.vue')
 
 const routes = [
   {

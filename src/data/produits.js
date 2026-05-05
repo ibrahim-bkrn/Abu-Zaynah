@@ -12,6 +12,8 @@ import imgEuphorbe       from '@/assets/images/imagesProduits/euphrobe.webp'
 
 import imgMielJujubier2 from '@/assets/images/imagesProduits/mielJujubier2.webp'
 import imgEuphorbe2     from '@/assets/images/imagesProduits/euphrobe2.webp'
+import imgMielBlanc2    from '@/assets/images/imagesProduits/mielBlanc2.png'
+import imgMielBlanc3    from '@/assets/images/imagesProduits/mielBlanc3.png'
 
 export const produits = [
   {
@@ -26,13 +28,13 @@ export const produits = [
     image: imgMielJujubier,
     gallery: [imgMielJujubier, imgMielJujubier2],
     storyImg: imgMielJujubier,
-    description: 'Le plus prisé des miels yéménites, récolté dans les vallées isolées du Hadramaout. Goût délicat, couleur ambrée dorée, vertus reconnues depuis des siècles dans la tradition islamique.',
+    description: "L'un des miels les plus prisés au monde, et ce pour sa qualité premium, ses bienfaits préservés grâce à un savoir-faire, une technique ancestrale dans un des lieux les plus préservés du monde dans les vallées de Hadramout.",
     bienfaits: [
-      'Propriétés antibactériennes naturelles reconnues',
-      'Soutient le système immunitaire',
-      'Facilite la digestion et apaise les intestins',
-      'Riche en antioxydants et minéraux',
+      { titre: 'Energisant', texte: 'Idéal pour combattre la fatigue et soutenir le système immunitaire.' },
+      { titre: 'Antioxydant', texte: 'Protège les cellules contre les radicaux libres.' },
+      { titre: 'Antibactérien', texte: 'Combat les défaillances immunitaires et aide à la cicatrisation.' },
     ],
+    conseilsUtilisation: "Pour profiter pleinement des bienfaits de ce miel, il est recommandé de consommer une cuillère le matin, à jeun. Veillez à conserver le produit dans un endroit frais et sec, à l'abri de la lumière et de l'humidité pour préserver toutes ses propriétés.",
     storyLabel: 'Origine',
     storyTitle: 'Des vallées secrètes du Yémen',
     storyText: 'Le miel de Jujubier, appelé "Sidr" en arabe, est considéré comme l\'un des miels les plus précieux au monde. Récolté une seule fois par an dans les vallées reculées du Hadramaout, ce miel est produit par des abeilles qui butinent exclusivement les fleurs du jujubier sauvage (Ziziphus spina-christi).',
@@ -52,12 +54,11 @@ export const produits = [
     image: imgEuphorbe,
     gallery: [imgEuphorbe, imgEuphorbe2],
     storyImg: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    description: "Aux vertus reconnues dans la tradition. Récolté en altitude dans les montagnes yéménites. Texture épaisse, saveur boisée et intense. Produit par des abeilles qui butinent l'euphorbe arborescente.",
+    description: "Ce miel séduit par son profil aromatique à part. Sa robe peut varier du doré à l'ambré selon les récoltes. Dès la première cuillère, il révèle une présence affirmée, une belle longueur en bouche et une signature gustative recherchée par les connaisseurs. Souvent appelé miel de cactus ou miel de daghmouss, ces appellations renvoient à un même univers : celui d'un miel rare, intense et profondément marqué par son terroir.",
     bienfaits: [
-      'Vertus expectorantes et respiratoires',
-      'Soutient le foie et les voies biliaires',
-      'Propriétés anti-inflammatoires',
-      'Texture épaisse, parfait en cure de santé',
+      { titre: 'Réchauffant', texte: 'Pour le corps, les articulations et la gorge — idéal en hiver.' },
+      { titre: 'Tonifiant', texte: 'Renforce la vitalité et l\'énergie.' },
+      { titre: 'Antioxydant', texte: 'Aide à lutter contre le stress oxydatif.' },
     ],
     storyLabel: 'Origine',
     storyTitle: "L'or boisé des montagnes yéménites",
@@ -76,13 +77,13 @@ export const produits = [
     format: 'Pot 250g',
     prix: '20€',
     image: imgMielBlanc,
+    gallery: [imgMielBlanc, imgMielBlanc2, imgMielBlanc3],
     storyImg: imgMielBlanc,
-    description: "Issu des prairies alpines de montagne, d'une blancheur et d'une douceur incomparables. Rare et très recherché par les connaisseurs. Sa texture crémeuse et son goût subtil en font un produit d'exception.",
+    description: "Originaire des vallées préservées de Naryn, au Kirghizistan, issu du sainfoin — une fleur mellifère réputée pour produire un nectar d'une qualité exceptionnelle. Ce miel unique séduit par sa blancheur rare, sa texture crémeuse idéale à tartiner, et son goût doux et floral aux notes subtiles qui plaisent aux petits comme aux grands. Un produit naturel, parfois enrichi par la luzerne ou le mélilot, alliant richesse aromatique et bienfaits nutritionnels.",
     bienfaits: [
-      'Très haute concentration en enzymes actives',
-      'Texture crémeuse, idéale tartiné sur du pain',
-      'Douceur naturelle sans amertume',
-      'Produit dans un environnement vierge de pollution',
+      { titre: 'Flore intestinale', texte: 'Prévient les troubles gastro-intestinaux et apaise l\'acidité gastrique (ballonnements, brûlures).' },
+      { titre: 'Énergisant', texte: 'Idéal en cas de fatigue ou juste avant les efforts physiques.' },
+      { titre: 'Antibactérien & antioxydant', texte: 'Aide à protéger l\'organisme des agressions extérieures.' },
     ],
     storyLabel: 'Origine',
     storyTitle: 'La blancheur immaculée du Tian Shan',
@@ -104,10 +105,10 @@ export const produits = [
     storyImg: imgHuileNigelle2,
     description: 'Pressée à froid, première pression à froid. La nigelle éthiopienne, réputée pour sa concentration et sa qualité hors du commun. Le Prophète ﷺ disait : "Dans la graine noire il y a un remède à tout sauf à la mort."',
     bienfaits: [
-      'Riche en thymoquinone, composé actif majeur',
-      'Soutient le système immunitaire naturellement',
-      'Propriétés anti-inflammatoires puissantes',
-      'Pressée à froid pour préserver tous les actifs',
+      { titre: 'Thymoquinone', texte: 'Riche en thymoquinone, composé actif majeur.' },
+      { titre: 'Immunité', texte: 'Soutient le système immunitaire naturellement.' },
+      { titre: 'Anti-inflammatoire', texte: 'Propriétés anti-inflammatoires puissantes.' },
+      { titre: 'Pressée à froid', texte: 'Première pression à froid pour préserver tous les actifs.' },
     ],
     storyLabel: 'Origine',
     storyTitle: 'La bénédiction des hauts plateaux',
@@ -129,10 +130,10 @@ export const produits = [
     storyImg: imgGelulesNigelle2,
     description: 'La puissance de la nigelle noire éthiopienne en gélules végétales. Pratiques, dosées avec précision pour un usage quotidien. Idéal pour ceux qui souhaitent profiter des bienfaits de la nigelle de manière pratique.',
     bienfaits: [
-      'Gélules végétales 100% naturelles',
-      'Dosage précis pour un usage quotidien',
-      'Même qualité que notre huile pressée à froid',
-      'Pratique en déplacement ou en cure',
+      { titre: '100% végétal', texte: 'Gélules végétales 100% naturelles.' },
+      { titre: 'Dosage précis', texte: 'Dosage précis pour un usage quotidien.' },
+      { titre: 'Même qualité', texte: 'Même nigelle que notre huile pressée à froid.' },
+      { titre: 'Pratique', texte: 'Idéal en déplacement ou en cure.' },
     ],
     storyLabel: 'Origine',
     storyTitle: 'La nigelle, remède prophétique',
@@ -154,10 +155,10 @@ export const produits = [
     storyImg: imgAmlou,
     description: "La pâte berbère ancestrale : amandes torréfiées, miel pur et huile d'argan pressée à froid. Un concentré d'énergie et de saveur que les familles amazighes transmettent de génération en génération.",
     bienfaits: [
-      "Riche en acides gras essentiels (oméga-9) grâce à l'huile d'argan",
-      'Amandes torréfiées apportant protéines et magnésium',
-      'Miel naturel pour une énergie douce et durable',
-      'Sans additif, sans conservateur — 100% naturel',
+      { titre: 'Oméga-9', texte: "Riche en acides gras essentiels grâce à l'huile d'argan." },
+      { titre: 'Protéines & magnésium', texte: 'Amandes torréfiées apportant protéines et magnésium.' },
+      { titre: 'Énergie durable', texte: 'Miel naturel pour une énergie douce et durable.' },
+      { titre: '100% naturel', texte: 'Sans additif, sans conservateur.' },
     ],
     storyLabel: 'Origine',
     storyTitle: 'Le trésor des montagnes amazighes',

@@ -54,8 +54,30 @@
 
 <script setup>
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
+import { useSeo, useJsonLd } from '@/composables/useSeo'
 import { produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
+
+useSeo({
+  title: 'Boutique — Miels & Nigelle',
+  description: 'Découvrez toute la sélection Abu Zaynah : Miel de Jujubier du Yémen, Miel d\'Euphorbe, Miel Blanc du Kirghizistan, Huile de Nigelle, Gélules de Nigelle et Amlou du Maroc.',
+  canonical: '/boutique',
+})
+
+useJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Boutique Abu Zaynah',
+  description: 'Catalogue complet des produits naturels Abu Zaynah.',
+  url: 'https://abouzaynah.com/boutique',
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://abouzaynah.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://abouzaynah.com/boutique' },
+    ],
+  },
+})
 
 useScrollAnimation()
 </script>

@@ -136,6 +136,13 @@
 
 <script setup>
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
+import { useSeo, useJsonLd } from '@/composables/useSeo'
+
+useSeo({
+  title: 'Comment commander ?',
+  description: 'Commandez vos miels rares et nigelle Abu Zaynah en quelques secondes via WhatsApp ou Snapchat. Livraison France entière sous 3 à 5 jours ouvrés.',
+  canonical: '/commander',
+})
 
 useScrollAnimation()
 
@@ -184,6 +191,16 @@ const faqs = [
     r: 'En général 3 à 5 jours ouvrés après confirmation du paiement. En période de forte demande, prévoir jusqu\'à 7 jours. Vous êtes tenu informé à chaque étape.',
   },
 ]
+
+useJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, r }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: r },
+  })),
+})
 </script>
 
 <style scoped>

@@ -17,8 +17,21 @@
 
           <!-- Galerie -->
           <div class="product-gallery">
-            <div class="product-main-img">
-              <img :src="produit.image" :alt="produit.nom" />
+            <div class="product-gallery-inner">
+              <div v-if="produit.gallery && produit.gallery.length > 1" class="product-thumbnails">
+                <button
+                  v-for="(img, i) in produit.gallery"
+                  :key="i"
+                  class="product-thumb"
+                  :class="{ active: activeImg === img }"
+                  @click="activeImg = img"
+                >
+                  <img :src="img" :alt="`${produit.nom} vue ${i + 1}`" loading="lazy" />
+                </button>
+              </div>
+              <div class="product-main-img">
+                <img :src="activeImg" :alt="produit.nom" fetchpriority="high" />
+              </div>
             </div>
             <div class="product-origin-card">
               <span class="product-origin-flag">{{ produit.flag }}</span>
@@ -35,7 +48,8 @@
             <h1 class="product-info-name">{{ produit.nom }}</h1>
             <span class="product-info-format">📦 {{ produit.format }}</span>
             <p class="product-info-price">{{ produit.prix }}</p>
-            <p class="product-info-desc">{{ produit.description }}</p>
+            <p class="product-info-desc" :class="{ clamped: !descExpanded }">{{ produit.description }}</p>
+            <button v-if="!descExpanded" class="desc-toggle" @click="descExpanded = true">Lire la suite</button>
 
             <div class="product-benefits">
               <h3>Points clés</h3>
@@ -45,8 +59,13 @@
                     <path d="M2 6l3 3 5-5"/>
                   </svg>
                 </div>
-                <span>{{ b }}</span>
+                <span><strong>{{ b.titre }}</strong> — {{ b.texte }}</span>
               </div>
+            </div>
+
+            <div v-if="produit.conseilsUtilisation" class="product-conseils">
+              <h3>Conseils d'utilisation</h3>
+              <p>{{ produit.conseilsUtilisation }}</p>
             </div>
 
             <!-- CTA Commander -->
@@ -85,7 +104,7 @@
         <div class="container">
           <div class="product-story-grid">
             <div class="product-story-img fade-up">
-              <img :src="produit.storyImg" :alt="`Origine ${produit.nom}`" />
+              <img :src="produit.storyImg" :alt="`Origine ${produit.nom}`" loading="lazy" />
             </div>
             <div class="product-story-text fade-up" style="transition-delay: 0.15s">
               <p class="section-label">{{ produit.storyLabel }}</p>
@@ -130,11 +149,14 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 import { getProduitById, getProduitsMini } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
+
+const SITE_URL = 'https://abouzaynah.com'
 
 const route = useRoute()
 const { observer } = useScrollAnimation()
@@ -144,7 +166,82 @@ const relatedProduits = computed(() =>
   produit.value ? getProduitsMini(produit.value.related) : []
 )
 
-// Scroll to top on product change
+const activeImg = ref(produit.value?.image)
+const descExpanded = ref(false)
+watch(produit, (p) => {
+  activeImg.value = p?.image
+  descExpanded.value = false
+}, { immediate: true })
+
+useHead(computed(() => {
+  if (!produit.value) return {}
+
+  const p = produit.value
+  const title = `${p.nom} — ${p.pays} | Abu Zaynah`
+  const description = p.description.slice(0, 155)
+  const url = `${SITE_URL}/produit/${p.id}`
+
+  return {
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { name: 'robots', content: 'index, follow' },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: url },
+      { property: 'og:type', content: 'product' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+    ],
+    link: [
+      { rel: 'canonical', href: url },
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Product',
+              name: p.nom,
+              description: p.description,
+              url,
+              brand: {
+                '@type': 'Brand',
+                name: 'Abu Zaynah',
+              },
+              offers: {
+                '@type': 'Offer',
+                price: p.prix.replace('€', ''),
+                priceCurrency: 'EUR',
+                availability: 'https://schema.org/InStock',
+                seller: {
+                  '@type': 'Organization',
+                  name: 'Abu Zaynah',
+                },
+              },
+              countryOfOrigin: {
+                '@type': 'Country',
+                name: p.pays,
+              },
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE_URL}/` },
+                { '@type': 'ListItem', position: 2, name: 'Boutique', item: `${SITE_URL}/boutique` },
+                { '@type': 'ListItem', position: 3, name: p.nom, item: url },
+              ],
+            },
+          ],
+        }),
+      },
+    ],
+  }
+}))
+
 watch(() => route.params.id, () => {
   window.scrollTo(0, 0)
 })
@@ -169,7 +266,7 @@ watch(() => route.params.id, () => {
 
 .product-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 72px;
   align-items: start;
   margin-bottom: 80px;
@@ -181,7 +278,7 @@ watch(() => route.params.id, () => {
 }
 
 .product-main-img {
-  width: 100%;
+  flex: 1;
   height: 480px;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -189,6 +286,35 @@ watch(() => route.params.id, () => {
   margin-bottom: 14px;
 }
 .product-main-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.product-gallery-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.product-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.product-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--sand);
+  cursor: pointer;
+  padding: 0;
+  background: var(--sand);
+  transition: border-color var(--transition), opacity var(--transition);
+}
+.product-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.product-thumb:hover { opacity: 0.8; }
+.product-thumb.active { border-color: var(--gold); }
 
 .product-origin-card {
   background: var(--cream);
@@ -239,12 +365,33 @@ watch(() => route.params.id, () => {
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.8;
-  margin-bottom: 28px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--sand);
+  margin-bottom: 8px;
+  padding-bottom: 0;
+}
+.product-info-desc.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
 }
 
-.product-benefits { margin-bottom: 32px; }
+.desc-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: block;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+.desc-toggle:hover { border-bottom-color: var(--gold); }
+
+.product-benefits { margin-bottom: 32px; padding-top: 28px; border-top: 1px solid var(--sand); }
 .product-benefits h3 {
   font-family: var(--font-serif);
   font-size: 1.1rem;
@@ -271,6 +418,27 @@ watch(() => route.params.id, () => {
 }
 .benefit-check svg { width: 10px; height: 10px; color: var(--gold); }
 .benefit-item span { font-size: 0.9rem; color: var(--brown-mid); line-height: 1.5; }
+
+.product-conseils {
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.product-conseils h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 8px;
+}
+.product-conseils p {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
 
 .product-cta {
   background: var(--cream);
@@ -349,6 +517,9 @@ watch(() => route.params.id, () => {
   .product-layout { grid-template-columns: 1fr; gap: 40px; }
   .product-gallery { position: static; }
   .product-main-img { height: 340px; }
+  .product-gallery-inner { flex-direction: column; }
+  .product-thumbnails { flex-direction: row; order: 2; padding-bottom: 18px; }
+  .product-main-img { order: 1; }
   .product-story-grid { grid-template-columns: 1fr; }
   .product-story-img { height: 260px; }
   .autres-produits-grid { grid-template-columns: 1fr 1fr; }

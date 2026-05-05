@@ -35,7 +35,7 @@
         </div>
 
         <div class="histoire-image-wrap fade-up" style="transition-delay: 0.15s">
-          <img :src="histoireImg" alt="Abu Zaynah — production de miel" />
+          <img :src="histoireImg" alt="Abu Zaynah — production de miel" loading="lazy" />
           <div class="histoire-badge">
             <div class="histoire-badge-icon">🍯</div>
             <div class="histoire-badge-text">
