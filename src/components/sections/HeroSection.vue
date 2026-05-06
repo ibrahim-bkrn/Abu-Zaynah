@@ -45,7 +45,7 @@ onMounted(() => {
 <style scoped>
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +140,6 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .hero { height: 680px; }
   .hero-title { font-size: clamp(2.9rem, 10vw, 4rem); }
   .hero-subtitle span{display: none;}
 }
