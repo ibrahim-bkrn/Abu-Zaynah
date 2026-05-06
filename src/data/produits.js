@@ -8,6 +8,8 @@ import imgHuileNigelle2  from '@/assets/images/nigelle2.webp'
 import imgGelulesNigelle  from '@/assets/images/imagesProduits/gelule de nigelle.webp'
 import imgGelulesNigelle2 from '@/assets/images/nigelle.webp'
 import imgAmlou          from '@/assets/images/imagesProduits/amlou.webp'
+import imgAmlou2         from '@/assets/images/imagesProduits/amlou2.png'
+import imgAmlouSecondaire from '@/assets/images/amlouSecondaire.webp'
 import imgEuphorbe       from '@/assets/images/imagesProduits/euphrobe.webp'
 
 import imgMielJujubier2 from '@/assets/images/imagesProduits/mielJujubier2.webp'
@@ -152,7 +154,8 @@ export const produits = [
     format: 'Pot 250g',
     prix: '10€',
     image: imgAmlou,
-    storyImg: imgAmlou,
+    gallery: [imgAmlou, imgAmlou2],
+    storyImg: imgAmlouSecondaire,
     description: "La pâte berbère ancestrale : amandes torréfiées, miel pur et huile d'argan pressée à froid. Un concentré d'énergie et de saveur que les familles amazighes transmettent de génération en génération.",
     bienfaits: [
       { titre: 'Oméga-9', texte: "Riche en acides gras essentiels grâce à l'huile d'argan." },
