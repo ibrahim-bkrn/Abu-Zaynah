@@ -3,7 +3,6 @@
     <div class="hero-bg" :class="{ loaded: bgLoaded }" ref="bgEl"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">✦ Miels Rares &amp; Produits de la Nigelle</p>
       <h1 class="hero-title">
         L'excellence <em>s'invite</em><br />à votre table
       </h1>
@@ -15,12 +14,6 @@
         <RouterLink to="/boutique" class="btn btn-gold">Découvrir la boutique</RouterLink>
         <RouterLink to="/commander" class="btn btn-outline">Commander</RouterLink>
       </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Découvrir</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
     </div>
   </section>
 </template>
@@ -46,6 +39,7 @@ onMounted(() => {
 .hero {
   position: relative;
   height: 100dvh;
+  height: var(--vh, 100dvh);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +49,7 @@ onMounted(() => {
 .hero-bg {
   position: absolute;
   inset: 0;
+  background-color: #1A1208;
   background-size: cover;
   background-position: center;
   transform: scale(1.04);
@@ -107,7 +102,7 @@ onMounted(() => {
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.16rem);
   color: rgba(255,255,255,0.78);
-  max-width: 520px;
+  max-width: 720px;
   margin: 0 auto 38px;
   line-height: 1.68;
   opacity: 0;
@@ -140,7 +135,7 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: clamp(2.9rem, 10vw, 4rem); }
+  .hero-title { font-size: clamp(2.9rem, 10vw, 4rem); white-space: nowrap; }
   .hero-subtitle span{display: none;}
 }
 

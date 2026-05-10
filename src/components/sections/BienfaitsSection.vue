@@ -3,13 +3,7 @@
     <div class="container">
 
       <div class="bienfaits-header fade-up">
-        <p class="section-label">Pourquoi nous choisir</p>
         <h2 class="section-title">Des bienfaits reconnus<br />depuis des siècles</h2>
-        <div class="gold-line center"></div>
-        <p class="section-subtitle">
-          Chaque produit Abu Zaynah est choisi pour ses vertus naturelles,
-          validées par la tradition et la science moderne.
-        </p>
       </div>
 
       <div class="c-grid">

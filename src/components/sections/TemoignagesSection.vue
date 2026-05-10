@@ -3,9 +3,7 @@
     <div class="container">
 
       <div class="temoignages-header fade-up">
-        <p class="section-label">Ils nous font confiance</p>
         <h2 class="section-title">Ce que disent<br />nos clients</h2>
-        <div class="gold-line center"></div>
       </div>
 
       <div class="temo-interactive fade-up">

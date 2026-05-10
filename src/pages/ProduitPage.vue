@@ -153,7 +153,7 @@ import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
-import { getProduitById, getProduitsMini } from '@/data/produits'
+import { getProduitById, produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
 
 const SITE_URL = 'https://abouzaynah.com'
@@ -162,9 +162,11 @@ const route = useRoute()
 const { observer } = useScrollAnimation()
 
 const produit = computed(() => getProduitById(route.params.id))
-const relatedProduits = computed(() =>
-  produit.value ? getProduitsMini(produit.value.related) : []
-)
+const relatedProduits = computed(() => {
+  if (!produit.value) return []
+  const autres = produits.filter(p => p.id !== produit.value.id)
+  return autres.sort(() => Math.random() - 0.5).slice(0, 3)
+})
 
 const activeImg = ref(produit.value?.image)
 const descExpanded = ref(false)

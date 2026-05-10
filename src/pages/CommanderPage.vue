@@ -18,9 +18,7 @@
     <section class="contact-section">
       <div class="container">
         <div class="contact-header fade-up">
-          <p class="section-label">Contactez-nous</p>
           <h2 class="section-title">Deux façons de commander</h2>
-          <div class="gold-line center"></div>
           <p class="section-subtitle">Pas de panier compliqué. Contactez Abou Zayanh directement — réponse rapide, service humain et de confiance.</p>
         </div>
 
@@ -70,9 +68,7 @@
     <section class="etapes-section">
       <div class="container">
         <div class="etapes-header fade-up">
-          <p class="section-label">Le parcours</p>
           <h2 class="section-title">Votre commande, étape par étape</h2>
-          <div class="gold-line center"></div>
         </div>
 
         <div class="etapes-list">
@@ -94,9 +90,7 @@
     <section class="faq-section">
       <div class="container">
         <div class="faq-header fade-up">
-          <p class="section-label">Questions fréquentes</p>
           <h2 class="section-title">On répond à tout</h2>
-          <div class="gold-line center"></div>
         </div>
 
         <div class="faq-grid">

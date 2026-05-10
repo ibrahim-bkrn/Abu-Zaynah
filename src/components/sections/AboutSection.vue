@@ -5,8 +5,7 @@
 
         <div class="histoire-text fade-up">
           <p class="section-label">Notre histoire</p>
-          <h2 class="section-title">De la source<br />à votre table</h2>
-          <div class="gold-line"></div>
+          <h2 class="section-title">De la source à votre table</h2>
           <p>
             Abu Zaynah est née d'une passion — celle de partir à la découverte des trésors que différents horizons nous réservent.
             Une invitation à allier les plaisirs de la terre avec tout ce qu'elle peut nous offrir comme bienfait, guidée par une seule directive : l'excellence.
@@ -28,7 +27,7 @@
               <div class="stat-label">Naturel &amp; Authentique</div>
             </div>
             <div class="stat">
-              <div class="stat-number">✦</div>
+              <div class="stat-number">↗</div>
               <div class="stat-label">Qualité certifiée</div>
             </div>
           </div>
@@ -65,6 +64,10 @@ import histoireImg from '@/assets/images/abou-zaynah7.webp'
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+}
+
+.histoire-text .section-title {
+  padding-bottom: 20px;
 }
 
 .histoire-text p {

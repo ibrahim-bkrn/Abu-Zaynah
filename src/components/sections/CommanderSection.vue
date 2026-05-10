@@ -5,10 +5,6 @@
       <h2 class="cta-band-title fade-up">
         Recevez votre sélection<br />directement chez vous
       </h2>
-      <p class="cta-band-sub fade-up">
-        Contactez Redouane directement sur WhatsApp ou Snapchat.
-        Réponse rapide, livraison soignée.
-      </p>
       <div class="cta-band-actions fade-up">
         <a
           href="https://wa.me/33745563692?text=Bonjour%20!%20Je%20souhaite%20passer%20une%20commande%20Abu%20Zaynah."

@@ -2,13 +2,8 @@
   <section class="produits-preview" id="produits">
     <div class="container">
       <div class="produits-preview-header fade-up">
-        <p class="section-label">Notre sélection</p>
         <h2 class="section-title">Des produits d'exception</h2>
-        <div class="gold-line center"></div>
-        <p class="section-subtitle">
-          Chaque produit est sélectionné à la source et livré dans le respect
-          de sa qualité naturelle.
-        </p>
+        <RouterLink to="/boutique" class="btn btn-outline-dark">Voir tout →</RouterLink>
       </div>
 
       <div class="produits-grid">
@@ -20,9 +15,6 @@
         />
       </div>
 
-      <div class="produits-preview-cta fade-up">
-        <RouterLink to="/boutique" class="btn btn-gold">Voir tous nos produits →</RouterLink>
-      </div>
     </div>
   </section>
 </template>
@@ -41,11 +33,13 @@ const produitsPreview = produits.slice(0, 3)
 }
 
 .produits-preview-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 52px;
 }
-.produits-preview-header .section-subtitle {
-  margin: 10px auto 0;
+.produits-preview-header .section-title {
+  margin: 0;
 }
 
 .produits-grid {

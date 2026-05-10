@@ -13,7 +13,7 @@
         <p class="origine-country">{{ panel.country }}</p>
         <div class="origine-line"></div>
         <p class="origine-desc">{{ panel.desc }}</p>
-        <RouterLink :to="`/boutique?filter=${panel.filter}`" class="origine-link">
+        <RouterLink to="/boutique" class="origine-link">
           Voir les produits →
         </RouterLink>
       </div>
