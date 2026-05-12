@@ -97,7 +97,7 @@ onMounted(() => {
   opacity: 0;
   animation: fadeUp 0.8s 0.55s ease forwards;
 }
-.hero-title em { font-style: italic; color: var(--gold-pale); }
+.hero-title em { font-style: italic; color: var(--gold-pale);}
 
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.16rem);
