@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     vue(),
     sitemap({
-      hostname: 'https://abouzaynah.com',
+      hostname: 'https://www.abuzaynah.com',
       dynamicRoutes: [
         '/boutique',
         '/commander',

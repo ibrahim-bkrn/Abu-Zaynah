@@ -156,7 +156,7 @@ import { useScrollAnimation } from '@/composables/useScrollAnimation'
 import { getProduitById, produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
 
-const SITE_URL = 'https://abouzaynah.com'
+const SITE_URL = 'https://abuzaynah.com'
 
 const route = useRoute()
 const { observer } = useScrollAnimation()
