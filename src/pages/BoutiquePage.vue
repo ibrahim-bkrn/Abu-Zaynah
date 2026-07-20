@@ -2,7 +2,7 @@
   <div>
     <!-- HERO -->
     <div class="boutique-hero">
-      <div class="boutique-hero-bg"></div>
+      <img :src="heroBg" alt="" class="boutique-hero-bg" fetchpriority="high" loading="eager" />
       <div class="boutique-hero-overlay"></div>
       <div class="container boutique-hero-content">
         <div class="boutique-hero-breadcrumb">
@@ -36,15 +36,12 @@
     <div class="cta-strip">
       <div class="container">
         <h2 class="cta-strip-title">Une question ? Une commande ?</h2>
-        <p>Contactez Redouane directement — réponse rapide, service humain.</p>
+        <p>Contactez Abu Zaynah directement — réponse rapide, service humain.</p>
         <div class="cta-strip-actions">
           <a href="https://wa.me/33745563692?text=Bonjour%20!%20Je%20souhaite%20passer%20une%20commande%20Abu%20Zaynah." target="_blank" rel="noopener" class="btn btn-wa">
             WhatsApp
           </a>
-          <a href="https://www.snapchat.com/add/abouzaynah" target="_blank" rel="noopener" class="btn btn-snap">
-            Snapchat
-          </a>
-          <RouterLink to="/commander" class="btn btn-outline-dark">Comment commander ?</RouterLink>
+          <RouterLink to="/panier" class="btn btn-outline-dark">Voir mon panier</RouterLink>
         </div>
       </div>
     </div>
@@ -57,6 +54,7 @@ import { useScrollAnimation } from '@/composables/useScrollAnimation'
 import { useSeo, useJsonLd } from '@/composables/useSeo'
 import { produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
+import heroBg from '@/assets/images/abou-zaynah6.webp'
 
 useSeo({
   title: 'Boutique — Miels & Nigelle',
@@ -96,9 +94,10 @@ useScrollAnimation()
 .boutique-hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('@/assets/images/abou-zaynah6.webp');
-  background-size: cover;
-  background-position: center 40%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
 }
 
 .boutique-hero-overlay {

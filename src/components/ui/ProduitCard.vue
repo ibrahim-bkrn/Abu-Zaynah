@@ -19,20 +19,26 @@
 
       <p class="pc-desc">{{ produit.description }}</p>
 
-      <RouterLink :to="`/produit/${produit.id}`" class="pc-cta">
-        Bienfaits &amp; Origines
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.4"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </RouterLink>
+      <div class="pc-actions">
+        <RouterLink :to="`/produit/${produit.id}`" class="pc-cta">
+          Bienfaits &amp; Origines
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.4"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </RouterLink>
+        <button class="pc-add" :class="{ added }" @click="handleAdd">
+          {{ added ? 'Ajouté ✓' : 'Ajouter au panier' }}
+        </button>
+      </div>
     </div>
 
   </article>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { useCart } from '@/composables/useCart'
 
 const props = defineProps({
   produit: { type: Object, required: true },
@@ -42,6 +48,15 @@ const props = defineProps({
 const delayStyle = computed(() =>
   props.delay ? { transitionDelay: `${props.delay}s` } : {}
 )
+
+const { addItem } = useCart()
+const added = ref(false)
+
+function handleAdd() {
+  addItem(props.produit, 1)
+  added.value = true
+  setTimeout(() => { added.value = false }, 1600)
+}
 </script>
 
 <style scoped>
@@ -149,6 +164,14 @@ const delayStyle = computed(() =>
   margin: 0;
 }
 
+/* ── Actions ──────────────────────────────────────── */
+.pc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
 /* ── CTA minimaliste ──────────────────────────────── */
 .pc-cta {
   display: inline-flex;
@@ -174,5 +197,28 @@ const delayStyle = computed(() =>
 }
 .pc-cta:hover svg {
   transform: translateX(3px);
+}
+
+/* ── Ajouter au panier ───────────────────────────── */
+.pc-add {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 2px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.pc-add:hover { background: var(--gold); color: var(--white); }
+.pc-add.added {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
 }
 </style>

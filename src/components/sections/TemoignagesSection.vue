@@ -107,7 +107,7 @@ function handleSelect(index) {
   position: relative;
   padding: 0 32px;
   max-width: 680px;
-  min-height: 170px;
+  min-height: 100px;
   text-align: center;
 }
 

@@ -15,7 +15,6 @@
         >
           <span class="c-ghost">{{ String(i + 1).padStart(2, '0') }}</span>
           <div class="c-content">
-            <div class="c-bar"></div>
             <h3 class="c-titre">{{ item.titre }}</h3>
             <p class="c-desc">{{ item.desc }}</p>
           </div>
@@ -91,18 +90,6 @@ const bienfaits = [
 .c-content {
   position: relative;
   z-index: 1;
-}
-
-.c-bar {
-  width: 26px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  margin-bottom: 16px;
-  border-radius: 2px;
-  transition: width 0.4s ease;
-}
-.c-item:hover .c-bar {
-  width: 50px;
 }
 
 .c-titre {

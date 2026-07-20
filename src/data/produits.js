@@ -13,6 +13,8 @@ import imgAmlouSecondaire from '@/assets/images/amlouSecondaire.webp'
 import imgEuphorbe       from '@/assets/images/imagesProduits/euphrobe.webp'
 
 import imgMielJujubier2 from '@/assets/images/imagesProduits/mielJujubier2.webp'
+import imgJuju          from '@/assets/images/imagesProduits/juju.png'
+import imgJuju2         from '@/assets/images/imagesProduits/juju2.png'
 import imgEuphorbe2     from '@/assets/images/imagesProduits/euphrobe2.webp'
 import imgMielBlanc2    from '@/assets/images/imagesProduits/mielBlanc2.png'
 import imgMielBlanc3    from '@/assets/images/imagesProduits/mielBlanc3.png'
@@ -27,9 +29,10 @@ export const produits = [
     region: 'Vallées isolées du Hadramaout',
     format: 'Pot 250g',
     prix: '39€',
-    image: imgMielJujubier,
-    gallery: [imgMielJujubier, imgMielJujubier2],
-    storyImg: imgMielJujubier,
+    prixNum: 39,
+    image: imgJuju,
+    gallery: [imgJuju, imgJuju2, imgMielJujubier2],
+    storyImg: imgJuju,
     description: "L'un des miels les plus prisés au monde, et ce pour sa qualité premium, ses bienfaits préservés grâce à un savoir-faire, une technique ancestrale dans un des lieux les plus préservés du monde dans les vallées de Hadramout.",
     bienfaits: [
       { titre: 'Energisant', texte: 'Idéal pour combattre la fatigue et soutenir le système immunitaire.' },
@@ -39,7 +42,7 @@ export const produits = [
     conseilsUtilisation: "Pour profiter pleinement des bienfaits de ce miel, il est recommandé de consommer une cuillère le matin, à jeun. Veillez à conserver le produit dans un endroit frais et sec, à l'abri de la lumière et de l'humidité pour préserver toutes ses propriétés.",
     storyLabel: 'Origine',
     storyTitle: 'Des vallées secrètes du Yémen',
-    storyText: 'Le miel de Jujubier, appelé "Sidr" en arabe, est considéré comme l\'un des miels les plus précieux au monde. Récolté une seule fois par an dans les vallées reculées du Hadramaout, ce miel est produit par des abeilles qui butinent exclusivement les fleurs du jujubier sauvage (Ziziphus spina-christi).',
+    storyText: 'Le miel de Jujubier, appelé "Sidr" en arabe, est considéré comme l\'un des miels les plus précieux au monde.',
     waMsg: 'Bonjour%20!%20Je%20souhaite%20commander%20du%20Miel%20de%20Jujubier%20(Abu%20Zaynah).',
     related: ['miel-euphorbe', 'miel-blanc', 'huile-nigelle'],
     tags: ['miel', 'yemen'],
@@ -53,8 +56,10 @@ export const produits = [
     region: 'Montagnes du Yémen central',
     format: 'Pot 250g',
     prix: '25€',
-    image: imgEuphorbe,
-    gallery: [imgEuphorbe, imgEuphorbe2],
+    prixNum: 25,
+    image: imgMielJujubier,
+    gallery: [imgMielJujubier, imgEuphorbe, imgEuphorbe2],
+    galleryPosition: ['center', 'center 75%', 'center'],
     storyImg: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
     description: "Ce miel séduit par son profil aromatique à part. Sa robe peut varier du doré à l'ambré selon les récoltes. Dès la première cuillère, il révèle une présence affirmée, une belle longueur en bouche et une signature gustative recherchée par les connaisseurs. Souvent appelé miel de cactus ou miel de daghmouss, ces appellations renvoient à un même univers : celui d'un miel rare, intense et profondément marqué par son terroir.",
     bienfaits: [
@@ -64,7 +69,7 @@ export const produits = [
     ],
     storyLabel: 'Origine',
     storyTitle: "L'or boisé des montagnes yéménites",
-    storyText: "Le miel d'Euphorbe est récolté dans les hauteurs du Yémen central, où les abeilles butinent les fleurs de l'euphorbe arborescente (Euphorbia). Ce miel à la saveur unique, légèrement amère et très parfumée, est particulièrement prisé pour ses vertus médicinales dans la tradition prophétique.",
+    storyText: "Le miel d'Euphorbe est récolté dans les hauteurs du Yémen central, où les abeilles butinent les fleurs de l'euphorbe arborescente (Euphorbia). Ce miel à la saveur unique, légèrement amère et très parfumée, est particulièrement prisé pour ses vertus médicinales.",
     waMsg: "Bonjour%20!%20Je%20souhaite%20commander%20du%20Miel%20d'Euphorbe%20(Abu%20Zaynah).",
     related: ['miel-jujubier', 'miel-blanc', 'huile-nigelle'],
     tags: ['miel', 'yemen'],
@@ -78,8 +83,10 @@ export const produits = [
     region: 'Prairies alpines du Tian Shan',
     format: 'Pot 250g',
     prix: '20€',
+    prixNum: 20,
     image: imgMielBlanc,
-    gallery: [imgMielBlanc, imgMielBlanc2, imgMielBlanc3],
+    gallery: [imgMielBlanc, imgMielBlanc2],
+    galleryPosition: ['center', 'center 75%'],
     storyImg: imgMielBlanc,
     description: "Originaire des vallées préservées de Naryn, au Kirghizistan, issu du sainfoin — une fleur mellifère réputée pour produire un nectar d'une qualité exceptionnelle. Ce miel unique séduit par sa blancheur rare, sa texture crémeuse idéale à tartiner, et son goût doux et floral aux notes subtiles qui plaisent aux petits comme aux grands. Un produit naturel, parfois enrichi par la luzerne ou le mélilot, alliant richesse aromatique et bienfaits nutritionnels.",
     bienfaits: [
@@ -103,9 +110,10 @@ export const produits = [
     region: 'Hauts plateaux éthiopiens',
     format: 'Flacon 100ml',
     prix: '12€',
+    prixNum: 12,
     image: imgHuileNigelle,
     storyImg: imgHuileNigelle2,
-    description: 'Pressée à froid, première pression à froid. La nigelle éthiopienne, réputée pour sa concentration et sa qualité hors du commun. Le Prophète ﷺ disait : "Dans la graine noire il y a un remède à tout sauf à la mort."',
+    description: 'Pressée à froid, première pression à froid. La nigelle éthiopienne, réputée pour sa concentration et sa qualité hors du commun."',
     bienfaits: [
       { titre: 'Thymoquinone', texte: 'Riche en thymoquinone, composé actif majeur.' },
       { titre: 'Immunité', texte: 'Soutient le système immunitaire naturellement.' },
@@ -128,9 +136,10 @@ export const produits = [
     region: 'Hauts plateaux éthiopiens',
     format: '60 gélules',
     prix: '12€',
+    prixNum: 12,
     image: imgGelulesNigelle,
     storyImg: imgGelulesNigelle2,
-    description: 'La puissance de la nigelle noire éthiopienne en gélules végétales. Pratiques, dosées avec précision pour un usage quotidien. Idéal pour ceux qui souhaitent profiter des bienfaits de la nigelle de manière pratique.',
+    description: 'La puissance de la nigelle noire éthiopienne en gélules végétales. Pratiques, dosées avec précision pour un usage quotidien. Idéal pour ceux qui souhaitent profiter des bienfaits de la nigelle.',
     bienfaits: [
       { titre: '100% végétal', texte: 'Gélules végétales 100% naturelles.' },
       { titre: 'Dosage précis', texte: 'Dosage précis pour un usage quotidien.' },
@@ -139,7 +148,7 @@ export const produits = [
     ],
     storyLabel: 'Origine',
     storyTitle: 'La nigelle, remède prophétique',
-    storyText: "Nos gélules de nigelle contiennent la même nigelle éthiopienne d'exception que notre huile. Chaque gélule est remplie de poudre de nigelle pure, sans additif ni excipient inutile. Une solution pratique pour intégrer ce remède prophétique dans votre quotidien.",
+    storyText: "Nos gélules de nigelle contiennent la même nigelle éthiopienne d'exception que notre huile. Chaque gélule est remplie de poudre de nigelle pure, sans additif ni excipient inutile. Une solution pratique pour intégrer ce remède dans votre quotidien.",
     waMsg: 'Bonjour%20!%20Je%20souhaite%20commander%20des%20G%C3%A9lules%20de%20Nigelle%20(Abu%20Zaynah).',
     related: ['huile-nigelle', 'miel-jujubier', 'miel-blanc'],
     tags: ['nigelle', 'ethiopie'],
@@ -153,6 +162,7 @@ export const produits = [
     region: 'Régions amazighes du Souss',
     format: 'Pot 250g',
     prix: '10€',
+    prixNum: 10,
     image: imgAmlou,
     gallery: [imgAmlou, imgAmlou2],
     storyImg: imgAmlouSecondaire,

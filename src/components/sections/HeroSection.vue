@@ -1,6 +1,14 @@
 <template>
   <section class="hero" id="accueil">
-    <div class="hero-bg" :class="{ loaded: bgLoaded }" ref="bgEl"></div>
+    <img
+      :src="heroBg"
+      alt=""
+      class="hero-bg-img"
+      :class="{ loaded: bgLoaded }"
+      fetchpriority="high"
+      loading="eager"
+      @load="bgLoaded = true"
+    />
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">
@@ -12,27 +20,18 @@
       </p>
       <div class="hero-actions">
         <RouterLink to="/boutique" class="btn btn-gold">Découvrir la boutique</RouterLink>
-        <RouterLink to="/commander" class="btn btn-outline">Commander</RouterLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import heroBg from '@/assets/images/abou-zaynah3.webp'
+import { useCart } from '@/composables/useCart'
 
 const bgLoaded = ref(false)
-const bgEl = ref(null)
-
-onMounted(() => {
-  const img = new Image()
-  img.src = heroBg
-  img.onload = () => {
-    if (bgEl.value) bgEl.value.style.backgroundImage = `url('${heroBg}')`
-    bgLoaded.value = true
-  }
-})
+const { count } = useCart()
 </script>
 
 <style scoped>
@@ -46,16 +45,18 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.hero-bg {
+.hero-bg-img {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   background-color: #1A1208;
-  background-size: cover;
-  background-position: center;
   transform: scale(1.04);
   transition: transform 8s ease;
 }
-.hero-bg.loaded { transform: scale(1); }
+.hero-bg-img.loaded { transform: scale(1); }
 
 .hero-overlay {
   position: absolute;
@@ -92,12 +93,12 @@ onMounted(() => {
   font-size: clamp(3rem, 7.5vw, 5.6rem);
   font-weight: 600;
   color: var(--white);
-  line-height: 1.05;
+  line-height: 1;
   margin-bottom: 22px;
   opacity: 0;
   animation: fadeUp 0.8s 0.55s ease forwards;
 }
-.hero-title em { font-style: italic; color: var(--gold-pale);}
+.hero-title em { font-style: normal; color: var(--gold-pale);}
 
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.16rem);
