@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abouzaynah.com/sitemap.xml
+Sitemap: https://www.abuzaynah.com/sitemap.xml

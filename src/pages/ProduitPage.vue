@@ -144,7 +144,7 @@ import { useCart } from '@/composables/useCart'
 import { getProduitById, produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
 
-const SITE_URL = 'https://abuzaynah.com'
+const SITE_URL = 'https://www.abuzaynah.com'
 
 const route = useRoute()
 const { observer } = useScrollAnimation()

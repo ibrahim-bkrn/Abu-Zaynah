@@ -34,9 +34,9 @@ useJsonLd({
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://abuzaynah.com/#organization',
+      '@id': 'https://www.abuzaynah.com/#organization',
       name: 'Abu Zaynah',
-      url: 'https://abuzaynah.com',
+      url: 'https://www.abuzaynah.com',
       description: 'Miels rares du Yémen et Nigelle d\'exception d\'Éthiopie.',
       contactPoint: {
         '@type': 'ContactPoint',
@@ -48,10 +48,10 @@ useJsonLd({
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://abuzaynah.com/#website',
-      url: 'https://abuzaynah.com',
+      '@id': 'https://www.abuzaynah.com/#website',
+      url: 'https://www.abuzaynah.com',
       name: 'Abu Zaynah',
-      publisher: { '@id': 'https://abuzaynah.com/#organization' },
+      publisher: { '@id': 'https://www.abuzaynah.com/#organization' },
       inLanguage: 'fr-FR',
     },
   ],

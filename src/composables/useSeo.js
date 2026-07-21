@@ -1,6 +1,6 @@
 import { useHead } from '@unhead/vue'
 
-const SITE_URL = 'https://abuzaynah.com'
+const SITE_URL = 'https://www.abuzaynah.com'
 const SITE_NAME = 'Abu Zaynah'
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`
 

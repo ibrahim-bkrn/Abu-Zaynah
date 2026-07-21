@@ -67,12 +67,12 @@ useJsonLd({
   '@type': 'CollectionPage',
   name: 'Boutique Abu Zaynah',
   description: 'Catalogue complet des produits naturels Abu Zaynah.',
-  url: 'https://abuzaynah.com/boutique',
+  url: 'https://www.abuzaynah.com/boutique',
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://abuzaynah.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://abuzaynah.com/boutique' },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.abuzaynah.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://www.abuzaynah.com/boutique' },
     ],
   },
 })
