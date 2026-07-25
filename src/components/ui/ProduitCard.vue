@@ -27,8 +27,8 @@
                   stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </RouterLink>
-        <button class="pc-add" :class="{ added }" @click="handleAdd">
-          {{ added ? 'Ajouté ✓' : 'Ajouter au panier' }}
+        <button class="pc-add" :class="{ added }" :disabled="!enStock" @click="handleAdd">
+          {{ added ? 'Ajouté ✓' : (enStock ? 'Ajouter au panier' : 'Rupture de stock') }}
         </button>
       </div>
     </div>
@@ -39,6 +39,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useCart } from '@/composables/useCart'
+import { useStock } from '@/composables/useStock'
 
 const props = defineProps({
   produit: { type: Object, required: true },
@@ -50,9 +51,12 @@ const delayStyle = computed(() =>
 )
 
 const { addItem } = useCart()
+const { isEnStock } = useStock()
 const added = ref(false)
+const enStock = computed(() => isEnStock(props.produit.nom))
 
 function handleAdd() {
+  if (!enStock.value) return
   addItem(props.produit, 1)
   added.value = true
   setTimeout(() => { added.value = false }, 1600)
@@ -220,5 +224,11 @@ function handleAdd() {
   background: var(--gold);
   color: var(--white);
   border-color: var(--gold);
+}
+.pc-add:disabled {
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  background: transparent;
 }
 </style>

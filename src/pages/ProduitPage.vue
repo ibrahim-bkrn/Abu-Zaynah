@@ -77,8 +77,8 @@
                 <span class="qty-value">{{ qty }}</span>
                 <button type="button" class="qty-btn" @click="qty++" aria-label="Augmenter la quantité">+</button>
               </div>
-              <button type="button" class="btn btn-gold product-add-btn" @click="handleAdd">
-                {{ added ? 'Ajouté au panier ✓' : 'Ajouter au panier' }}
+              <button type="button" class="btn btn-gold product-add-btn" :disabled="!enStock" @click="handleAdd">
+                {{ added ? 'Ajouté au panier ✓' : (enStock ? 'Ajouter au panier' : 'Rupture de stock') }}
               </button>
               <p class="product-cta-note">🔒 Paiement à la confirmation · Livraison soignée · Réponse rapide</p>
             </div>
@@ -141,6 +141,7 @@ import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 import { useCart } from '@/composables/useCart'
+import { useStock } from '@/composables/useStock'
 import { getProduitById, produits } from '@/data/produits'
 import ProduitCard from '@/components/ui/ProduitCard.vue'
 
@@ -163,8 +164,10 @@ const activeImgPosition = computed(() => {
 })
 const descExpanded = ref(false)
 const { addItem } = useCart()
+const { isEnStock } = useStock()
 const qty = ref(1)
 const added = ref(false)
+const enStock = computed(() => produit.value ? isEnStock(produit.value.nom) : true)
 
 watch(produit, (p) => {
   activeImg.value = p?.image
@@ -173,7 +176,7 @@ watch(produit, (p) => {
 }, { immediate: true })
 
 function handleAdd() {
-  if (!produit.value) return
+  if (!produit.value || !enStock.value) return
   addItem(produit.value, qty.value)
   added.value = true
   setTimeout(() => { added.value = false }, 1800)
@@ -491,6 +494,12 @@ watch(() => route.params.id, () => {
 }
 
 .product-add-btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 0.9rem; }
+.product-add-btn:disabled {
+  background: transparent;
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
 
 .product-story {
   padding: 72px 0;
