@@ -65,10 +65,6 @@
             <span>Sous-total</span>
             <span>{{ formatPrice(total) }}</span>
           </div>
-          <div class="panier-summary-row panier-summary-shipping">
-            <span>Expédition</span>
-            <span>Calculée à la commande</span>
-          </div>
           <div class="panier-summary-row panier-summary-total">
             <span>Total</span>
             <span>{{ formatPrice(total) }}</span>

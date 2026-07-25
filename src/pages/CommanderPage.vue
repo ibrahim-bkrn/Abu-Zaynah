@@ -97,10 +97,6 @@
             <span>Sous-total</span>
             <span>{{ formatPrice(total) }}</span>
           </div>
-          <div class="checkout-summary-row checkout-summary-shipping">
-            <span>Expédition</span>
-            <span>Saisissez votre adresse pour voir les options de livraison.</span>
-          </div>
           <div class="checkout-summary-row checkout-summary-total">
             <span>Total</span>
             <span>{{ formatPrice(total) }}</span>
