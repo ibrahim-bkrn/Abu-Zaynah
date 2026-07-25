@@ -68,6 +68,7 @@ import histoireImg from '@/assets/images/abou-zaynah7.webp'
 
 .histoire-text .section-title {
   padding-bottom: 20px;
+  font-size: 2.8rem;
 }
 
 .histoire-text p {
