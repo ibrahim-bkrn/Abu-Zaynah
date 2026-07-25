@@ -292,7 +292,6 @@ watch(() => items.length, (len, prevLen) => {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--brown);
-  padding-bottom: 10px;
 }
 
 .mini-cart-close {
@@ -313,7 +312,7 @@ watch(() => items.length, (len, prevLen) => {
 .mini-cart-close:hover { color: var(--gold); background: var(--sand); }
 
 .mini-cart-empty {
-  padding: 44px 22px 32px;
+  padding: 56px 22px 32px;
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -322,7 +321,7 @@ watch(() => items.length, (len, prevLen) => {
 .mini-cart-items {
   max-height: 320px;
   overflow-y: auto;
-  padding: 34px 10px 10px;
+  padding: 46px 10px 10px;
 }
 
 .mini-cart-item {
