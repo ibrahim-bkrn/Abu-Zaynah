@@ -60,7 +60,7 @@ import citationBg from '@/assets/images/arrierePlanCitation.webp'
 }
 
 .citation-text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 400;
   font-style: italic;
