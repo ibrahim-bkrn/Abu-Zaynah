@@ -30,6 +30,7 @@
 
             <Transition name="mini-cart-fade">
               <div v-if="miniCartOpen" class="mini-cart">
+                <span class="mini-cart-title">Votre panier</span>
                 <button type="button" class="mini-cart-close" aria-label="Fermer l'aperçu du panier" @click="closeMiniCart">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/>
@@ -175,7 +176,7 @@ watch(() => items.length, (len, prevLen) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 90px;
 }
 
 .navbar-logo {
@@ -184,7 +185,7 @@ watch(() => items.length, (len, prevLen) => {
 }
 
 .navbar-logo-img {
-  height: 44px;
+  height: 50px;
   width: auto;
   display: block;
   transition: filter 0.45s ease;
@@ -204,7 +205,7 @@ watch(() => items.length, (len, prevLen) => {
 }
 
 .navbar-nav a {
-  font-size: 0.84rem;
+  font-size: 1rem;
   font-weight: 500;
   color: rgba(255,255,255,0.88);
   letter-spacing: 0.03em;
@@ -282,6 +283,16 @@ watch(() => items.length, (len, prevLen) => {
   border-left: 1px solid var(--sand);
   border-top: 1px solid var(--sand);
   transform: rotate(45deg);
+}
+
+.mini-cart-title {
+  position: absolute;
+  top: 16px; left: 18px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brown);
+  padding-bottom: 10px;
 }
 
 .mini-cart-close {
