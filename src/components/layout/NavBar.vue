@@ -212,18 +212,7 @@ watch(() => items.length, (len, prevLen) => {
   position: relative;
 }
 
-.navbar-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width var(--transition);
-}
-
 .navbar-nav a:hover { color: var(--gold-pale); }
-.navbar-nav a:hover::after { width: 100%; }
-.navbar-nav a.router-link-active::after { width: 100%; }
 
 .navbar.scrolled .navbar-nav a,
 .navbar.solid .navbar-nav a { color: var(--brown-mid); }
