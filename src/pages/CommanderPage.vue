@@ -136,7 +136,7 @@ useSeo({
 })
 
 // Remplacer par l'endpoint Formspree lié à l'adresse email définitive du site.
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REMPLACER_PAR_ID_FORMSPREE'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvgwboz'
 
 const { items, total, clearCart } = useCart()
 
