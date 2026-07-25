@@ -1,3 +1,4 @@
+import { reactive } from 'vue'
 import img4 from '@/assets/images/abou-zaynah4.webp'
 import img5 from '@/assets/images/abou-zaynah5.webp'
 
@@ -19,7 +20,7 @@ import imgEuphorbe2     from '@/assets/images/imagesProduits/euphrobe2.webp'
 import imgMielBlanc2    from '@/assets/images/imagesProduits/mielBlanc2.png'
 import imgMielBlanc3    from '@/assets/images/imagesProduits/mielBlanc3.png'
 
-export const produits = [
+export const produits = reactive([
   {
     id: 'miel-jujubier',
     nom: 'Miel de Jujubier',
@@ -180,7 +181,7 @@ export const produits = [
     related: ['miel-jujubier', 'miel-blanc', 'huile-nigelle'],
     tags: ['almou', 'maroc'],
   },
-]
+])
 
 export function getProduitById(id) {
   return produits.find((p) => p.id === id) || null
@@ -189,3 +190,131 @@ export function getProduitById(id) {
 export function getProduitsMini(ids) {
   return ids.map((id) => produits.find((p) => p.id === id)).filter(Boolean)
 }
+
+// ── Synchronisation avec la feuille Google Sheets "Produits" ──────────
+// Les 6 produits ci-dessus servent de secours si la feuille est injoignable.
+const PRODUITS_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1JdLz4hfZjzMX4G06w3EDlLlCkrKeP44Om3NdSCSa5_8/export?format=csv&gid=840147128'
+const FETCH_TIMEOUT_MS = 6000
+const PLACEHOLDER_IMAGE = img4
+
+const FLAG_BY_PAYS = {
+  'Yémen': '🇾🇪',
+  'Éthiopie': '🇪🇹',
+  'Maroc': '🇲🇦',
+  'Kirghizistan': '🇰🇬',
+}
+
+function slugify(str) {
+  return str
+    .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    .toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
+function waMsgFor(nom) {
+  return encodeURIComponent(`Bonjour ! Je souhaite commander ${nom} (Abu Zaynah).`)
+}
+
+function parseCsv(text) {
+  const rows = []
+  let row = []
+  let field = ''
+  let inQuotes = false
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i]
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++ }
+        else { inQuotes = false }
+      } else {
+        field += c
+      }
+    } else if (c === '"') {
+      inQuotes = true
+    } else if (c === ',') {
+      row.push(field); field = ''
+    } else if (c === '\r') {
+      // ignore
+    } else if (c === '\n') {
+      row.push(field); rows.push(row); row = []; field = ''
+    } else {
+      field += c
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row) }
+  return rows
+}
+
+function buildBienfaits(row) {
+  const bienfaits = []
+  for (let n = 1; n <= 4; n++) {
+    const titre = row[`Bienfait${n}_Titre`]?.trim()
+    const texte = row[`Bienfait${n}_Texte`]?.trim()
+    if (titre) bienfaits.push({ titre, texte: texte || '' })
+  }
+  return bienfaits
+}
+
+async function loadProduitsFromSheet() {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
+  try {
+    const res = await fetch(PRODUITS_SHEET_CSV_URL, { signal: controller.signal })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const text = await res.text()
+    const rows = parseCsv(text.trim())
+    const header = rows[0]
+    const dataRows = rows.slice(1).filter((r) => r.some((c) => c.trim() !== ''))
+
+    for (const r of dataRows) {
+      const row = {}
+      header.forEach((h, i) => { row[h.trim()] = (r[i] ?? '').trim() })
+      if (!row.Nom) continue
+
+      const existing = produits.find((p) => p.nom === row.Nom)
+      const prixNum = Number(row.Prix) || 0
+      const image = row.Image || existing?.image || PLACEHOLDER_IMAGE
+      const bienfaits = buildBienfaits(row)
+      const tags = row.Tags ? row.Tags.split(';').map((t) => t.trim()).filter(Boolean) : []
+
+      const fields = {
+        nom: row.Nom,
+        categorie: row.Categorie || existing?.categorie || '',
+        pays: row.Pays || existing?.pays || '',
+        flag: FLAG_BY_PAYS[row.Pays] || existing?.flag || '',
+        region: row.Region || existing?.region || '',
+        format: row.Format || existing?.format || '',
+        prix: `${prixNum}€`,
+        prixNum,
+        image,
+        gallery: row.Image ? [image] : (existing?.gallery || [image]),
+        storyImg: existing?.storyImg || image,
+        description: row.Description || existing?.description || '',
+        bienfaits: bienfaits.length ? bienfaits : (existing?.bienfaits || []),
+        conseilsUtilisation: row.ConseilsUtilisation || existing?.conseilsUtilisation || '',
+        storyLabel: 'Origine',
+        storyTitle: row.StoryTitle || existing?.storyTitle || '',
+        storyText: row.StoryText || existing?.storyText || '',
+        tags: tags.length ? tags : (existing?.tags || []),
+      }
+
+      if (existing) {
+        Object.assign(existing, fields)
+      } else {
+        produits.push({
+          id: slugify(row.Nom),
+          waMsg: waMsgFor(row.Nom),
+          related: [],
+          ...fields,
+        })
+      }
+    }
+  } catch {
+    // Feuille injoignable (réseau, droits...) : on garde les produits codés en dur ci-dessus.
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
+loadProduitsFromSheet()
