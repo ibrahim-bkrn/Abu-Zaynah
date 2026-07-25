@@ -274,7 +274,8 @@ async function loadProduitsFromSheet() {
 
       const existing = produits.find((p) => p.nom === row.Nom)
       const prixNum = Number(row.Prix) || 0
-      const image = row.Image || existing?.image || PLACEHOLDER_IMAGE
+      const imageUrl = /^https?:\/\//.test(row.Image) ? row.Image : ''
+      const image = imageUrl || existing?.image || PLACEHOLDER_IMAGE
       const bienfaits = buildBienfaits(row)
       const tags = row.Tags ? row.Tags.split(';').map((t) => t.trim()).filter(Boolean) : []
 
@@ -288,7 +289,7 @@ async function loadProduitsFromSheet() {
         prix: `${prixNum}€`,
         prixNum,
         image,
-        gallery: row.Image ? [image] : (existing?.gallery || [image]),
+        gallery: imageUrl ? [image] : (existing?.gallery || [image]),
         storyImg: existing?.storyImg || image,
         description: row.Description || existing?.description || '',
         bienfaits: bienfaits.length ? bienfaits : (existing?.bienfaits || []),
