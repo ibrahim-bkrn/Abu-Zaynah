@@ -124,7 +124,7 @@ function handleSelect(index) {
 .deco-close { bottom: -40px; right: 0; }
 
 .quote-text {
-  font-family: var(--font-sans);
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.3rem, 2.5vw, 1.75rem);
   font-weight: 400;
   font-style: italic;
