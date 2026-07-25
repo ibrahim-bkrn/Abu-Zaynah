@@ -136,7 +136,7 @@ const { count } = useCart()
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: clamp(2.1rem, 8.5vw, 3rem); white-space: nowrap; }
+  .hero-title { font-size: clamp(2.4rem, 9vw, 3.3rem); white-space: nowrap; }
   .hero-subtitle span{display: none;}
 }
 
