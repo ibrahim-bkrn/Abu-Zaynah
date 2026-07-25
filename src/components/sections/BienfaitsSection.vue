@@ -73,7 +73,7 @@ const bienfaits = [
   position: absolute;
   top: -14px;
   right: 12px;
-  font-family: var(--font-serif);
+  font-family: 'Cormorant Garamond', serif;
   font-size: 7.5rem;
   font-weight: 700;
   line-height: 1;
