@@ -19,12 +19,28 @@
 <script setup>
 import { computed, onErrorCaptured, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import NavBar from '@/components/layout/NavBar.vue'
 import FooterBar from '@/components/layout/FooterBar.vue'
 
+// Valeurs par défaut, surchargées par chaque page via useSeo() dans composables/useSeo.js.
+useHead({
+  title: 'Abu Zaynah — Miels Rares & Nigelle d\'Exception',
+  meta: [
+    { name: 'description', content: "Abu Zaynah — Miels rares du Yémen et Nigelle d'exception. Miel de Jujubier, Miel Blanc, Huile de Nigelle éthiopienne. Livraison France entière." },
+    { name: 'robots', content: 'index, follow' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'Abu Zaynah' },
+    { property: 'og:locale', content: 'fr_FR' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.abuzaynah.com/' },
+  ],
+})
+
 const route = useRoute()
 const isHome = computed(() => route.name === 'home')
-const ready = ref(false)
+const ready = ref(import.meta.env.SSR)
 const pageError = ref(false)
 
 onErrorCaptured((err, instance, info) => {
