@@ -216,6 +216,7 @@ useHead(computed(() => {
               '@type': 'Product',
               name: p.nom,
               description: p.description,
+              image: p.image.startsWith('http') ? p.image : `${SITE_URL}${p.image}`,
               url,
               brand: {
                 '@type': 'Brand',
